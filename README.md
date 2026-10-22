@@ -20,7 +20,7 @@ If you are developing a production application, we recommend using TypeScript wi
 
 ### API Used
 GitHub REST API:
-https://api.github.com/users/YOUR_USERNAME/repos
+https://api.github.com/users/hardiknandaniya28/repos
 
 ### Features
 - Fetches repositories using the Fetch API.
