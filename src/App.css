@@ -1,0 +1,150 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f6fa;
+  color: #222;
+}
+
+.header {
+  padding: 35px 8%;
+  color: white;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.avatar {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  background: #e4cfa9;
+  color: #20345c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.header h1 {
+  margin: 0 0 8px;
+}
+
+.header p {
+  margin: 0;
+}
+
+.tagline {
+  margin-top: 25px !important;
+  line-height: 1.6;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 28px;
+  padding: 18px;
+  background: white;
+  box-shadow: 0 2px 8px #00000012;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #20345c;
+  font-weight: bold;
+}
+
+.navbar a:hover {
+  color: #5278c7;
+}
+
+.section {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 35px 25px;
+}
+
+.section h2 {
+  font-size: 26px;
+  color: #20345c;
+  margin-top: 0;
+}
+
+.section p {
+  line-height: 1.7;
+}
+
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 0;
+  list-style: none;
+}
+
+.skills-list li {
+  background: #e0e8f8;
+  color: #20345c;
+  padding: 10px 16px;
+  border-radius: 8px;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.project-card {
+  background: white;
+  padding: 22px;
+  border-radius: 10px;
+  border: 1px solid #dce2ed;
+  box-shadow: 0 3px 10px #00000008;
+}
+
+.project-card h3 {
+  color: #20345c;
+}
+
+.project-card p {
+  line-height: 1.6;
+}
+
+.footer {
+  background: #20345c;
+  color: white;
+  text-align: center;
+  padding: 28px 15px;
+  margin-top: 20px;
+}
+
+.footer a {
+  color: #e4cfa9;
+}
+
+@media (max-width: 600px) {
+  .header {
+    padding: 28px 6%;
+  }
+
+  .navbar {
+    gap: 18px;
+  }
+
+  .section {
+    padding: 28px 6%;
+  }
+}
