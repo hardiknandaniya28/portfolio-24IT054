@@ -4,6 +4,7 @@ function NavBar() {
     return (
         <nav className="navbar">
             <Link to="/">Home</Link>
+            <Link to="/dashboard">Dashboard</Link>
             <Link to="/tasks">Tasks</Link>
             <Link to="/projects">Projects</Link>
             <Link to="/contact">Contact</Link>

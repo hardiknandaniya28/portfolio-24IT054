@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useState, memo } from 'react';
 import { updateTask, deleteTask } from '../api';
 
-export default function TaskItem({ task, onUpdated, onDeleted, showToast }) {
+function TaskItem({ task, onUpdated, onDeleted, showToast }) {
     const [isEditing, setIsEditing] = useState(false);
     const [editTitle, setEditTitle] = useState(task.title);
     const [editDescription, setEditDescription] = useState(task.description || '');
@@ -190,4 +190,6 @@ export default function TaskItem({ task, onUpdated, onDeleted, showToast }) {
         </div>
     );
 }
+
+export default memo(TaskItem);
 

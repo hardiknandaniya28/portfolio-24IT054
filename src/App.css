@@ -1088,3 +1088,91 @@ main {
   background: #334155;
   color: #ffffff;
 }
+
+
+/* Practical 8: Dashboard, HeavyChart, and Fallback Styles */
+.dashboard-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.dashboard-header {
+  margin-bottom: 24px;
+}
+
+.dashboard-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.stat-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.dark-mode .stat-card {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+.stat-num {
+  display: block;
+  font-size: 2.2rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.stat-pending {
+  color: #f87171;
+}
+
+.stat-completed {
+  color: #4ade80;
+}
+
+.stat-total {
+  color: #818cf8;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.dark-mode .stat-label {
+  color: #94a3b8;
+}
+
+.heavy-chart-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.dark-mode .heavy-chart-card {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+.dark-mode .heavy-chart-card h3 {
+  color: #f8fafc !important;
+}
+
+.route-loading-fallback {
+  padding: 60px 20px;
+  text-align: center;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -94,19 +94,19 @@ export default function TaskManager() {
         }
     };
 
-    const handleCreated = (newTask) => {
+    const handleCreated = useCallback((newTask) => {
         setTasks((prev) => [newTask, ...prev]);
-    };
+    }, []);
 
-    const handleUpdated = (updatedTask) => {
+    const handleUpdated = useCallback((updatedTask) => {
         setTasks((prev) =>
             prev.map((t) => (t._id === updatedTask._id ? updatedTask : t))
         );
-    };
+    }, []);
 
-    const handleDeleted = (id) => {
+    const handleDeleted = useCallback((id) => {
         setTasks((prev) => prev.filter((t) => t._id !== id));
-    };
+    }, []);
 
     // If user is not authenticated, show Auth card (Login / Register)
     if (!token) {

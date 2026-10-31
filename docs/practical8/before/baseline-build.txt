@@ -1,0 +1,22 @@
+=== VITE BASELINE BUILD OUTPUT (BEFORE OPTIMIZATION) ===
+Timestamp: 2026-10-31 17:06:43
+Command: npm run build (in student-portfolio)
+
+vite v8.3.5 building client environment for production...
+transforming...
+✓ 43 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.46 kB │ gzip:  0.30 kB
+dist/assets/index-Bu5XbZg8.css   15.87 kB │ gzip:  4.05 kB
+dist/assets/index-DOEyrhVU.js   274.89 kB │ gzip: 86.25 kB
+✓ built in 230ms
+
+--- Baseline Metrics Summary ---
+Total JS Chunks: 1 (Single monolithic bundle)
+Initial JavaScript Bundle: dist/assets/index-DOEyrhVU.js (274.89 kB, gzip: 86.25 kB)
+Total JavaScript Generated: 274.89 kB (gzip: 86.25 kB)
+CSS Bundle: dist/assets/index-Bu5XbZg8.css (15.87 kB, gzip: 4.05 kB)
+Code Splitting / Route Lazy Loading: None
+All routes (Home, Projects, Tasks, Contact, NotFound, Auth) bundled into initial load.
+

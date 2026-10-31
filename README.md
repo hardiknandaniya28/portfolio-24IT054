@@ -90,6 +90,13 @@ Integrates secure user authentication (registration & login) using bcrypt passwo
   - Automatic session expiration detection: redirects to login if any protected request returns 401.
   - **Log Out** button to securely clear the client token.
 
+### Practical 8: Performance Optimization and Lazy Loading in React
+- **Route-Based Code Splitting**: All pages (`Home`, `Dashboard`, `ProjectsPage`, `TasksPage`, `Contact`, `NotFound`) are loaded on-demand via `React.lazy()` and wrapped in `<Suspense>`.
+- **Smooth Delayed Fallback UI**: Implemented `DelayedFallback.jsx` with a 300ms threshold to prevent flickering spinners on fast networks.
+- **Heavy Third-Party Component Isolation**: `HeavyChart.jsx` (powered by `recharts`) is lazily loaded only on the `/dashboard` route, keeping the main bundle lean and clean.
+- **Render Optimization**: Wrapped `TaskItem` in `React.memo` and stabilized CRUD handlers in `TaskManager` with `useCallback`, eliminating redundant re-renders of the task list.
+- **Build & Profiling Evidence**: Detailed comparison metrics, chunk breakdowns, and profiling notes are preserved in `docs/practical8/comparison.md`.
+
 ### Running Both Servers Locally
 1. **Backend**:
    ```powershell
@@ -100,4 +107,4 @@ Integrates secure user authentication (registration & login) using bcrypt passwo
    ```powershell
    npm run dev
    ```
-3. Navigate to `http://localhost:5173/tasks` to test registration, login, and protected task operations.
+3. Navigate to `http://localhost:5173/tasks` for authenticated task management, and `http://localhost:5173/dashboard` for performance-optimized analytics.
