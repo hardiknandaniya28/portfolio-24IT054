@@ -69,3 +69,35 @@ Connects the React client to the Node.js/Express and MongoDB Atlas backend. Repl
    npm run dev
    ```
 3. Open `http://localhost:5173` in your browser and click **Tasks** in the navigation bar.
+
+
+## Practical 7: Authentication and Middleware Pipeline
+
+### Overview
+Integrates secure user authentication (registration & login) using bcrypt password hashing, JSON Web Tokens (JWT) with 1-hour expiration, and an Express middleware pipeline (`authMiddleware` and `validateTask`). Protects all task routes while maintaining a seamless React authentication experience with automatic 401 handling and client logout.
+
+### Features
+- **User Authentication**:
+  - `POST /register`: Hashes passwords with `bcryptjs` (10 rounds) and creates user document in MongoDB.
+  - `POST /login`: Verifies password hash using `bcrypt.compare` and issues a signed JWT token valid for 1 hour.
+  - `GET /me`: Authenticated endpoint returning user profile (excluding password).
+- **Middleware Pipeline**:
+  - `authMiddleware.js`: Verifies `Authorization: Bearer <token>` and protects task routes.
+  - `validateTask.js`: Enforces required non-empty titles and valid priorities before MongoDB operations.
+- **Frontend Integration (`src/components/Auth.jsx`)**:
+  - Clean card-based login and registration interface matching Practical 7 reference UI.
+  - Stores JWT token in `localStorage`.
+  - Automatic session expiration detection: redirects to login if any protected request returns 401.
+  - **Log Out** button to securely clear the client token.
+
+### Running Both Servers Locally
+1. **Backend**:
+   ```powershell
+   cd task-manager-api-24IT054
+   npm start
+   ```
+2. **Frontend**:
+   ```powershell
+   npm run dev
+   ```
+3. Navigate to `http://localhost:5173/tasks` to test registration, login, and protected task operations.

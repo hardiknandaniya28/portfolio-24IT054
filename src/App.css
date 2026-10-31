@@ -1040,3 +1040,51 @@ main {
   border-color: #334155;
   color: #94a3b8;
 }
+
+
+/* Practical 7 Authentication & Logout Styles */
+.task-manager-subtitle {
+  margin: 4px 0 0;
+  font-size: 0.95rem;
+  color: #64748b;
+}
+
+.user-email-tag {
+  color: #4f46e5;
+  font-weight: 600;
+}
+
+.task-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-logout {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #475569;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-logout:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+  border-color: #94a3b8;
+}
+
+.dark-mode .btn-logout {
+  background: #1e293b;
+  border-color: #334155;
+  color: #cbd5e1;
+}
+
+.dark-mode .btn-logout:hover {
+  background: #334155;
+  color: #ffffff;
+}
