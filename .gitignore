@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# MongoDB environment variables
+.env
+
+# Backend repository
+task-manager-api-24IT054/

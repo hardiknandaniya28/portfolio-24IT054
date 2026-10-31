@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
@@ -8,6 +7,7 @@ import Footer from './components/Footer.jsx';
 
 import Home from './pages/Home.jsx';
 import ProjectsPage from './pages/ProjectsPage.jsx';
+import TasksPage from './pages/TasksPage.jsx';
 import Contact from './pages/Contact.jsx';
 import NotFound from './pages/NotFound.jsx';
 
@@ -29,6 +29,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/tasks" element={<TasksPage />} />
         <Route path="/projects" element={<ProjectsPage />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<NotFound />} />

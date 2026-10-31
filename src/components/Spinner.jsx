@@ -1,9 +1,8 @@
-
-function Spinner() {
+function Spinner({ message = 'Loading tasks...' }) {
     return (
         <div className="api-loading" role="status">
             <div className="spinner-circle"></div>
-            <p>Loading your GitHub repositories...</p>
+            <p>{message}</p>
         </div>
     );
 }

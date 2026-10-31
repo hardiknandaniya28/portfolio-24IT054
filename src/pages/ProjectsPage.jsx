@@ -1,10 +1,9 @@
-
-import Projects from '../components/Projects.jsx';
+import TaskManager from '../components/TaskManager.jsx';
 
 function ProjectsPage() {
     return (
-        <main>
-            <Projects />
+        <main className="tasks-page-main">
+            <TaskManager />
         </main>
     );
 }
