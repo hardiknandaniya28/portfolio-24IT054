@@ -104,6 +104,12 @@ Integrates secure user authentication (registration & login) using bcrypt passwo
 - **Debug Counters**: `GET /debug/cache-stats` tracks cache hits and misses; response headers expose `X-Cache: HIT / MISS`.
 - **Performance**: Response times drop from ~84 ms (MongoDB Atlas cloud query) to ~3 ms (in-memory RAM), achieving ~96% lower latency.
 
+### Practical 10: Asynchronous Processing with Event-Driven Architecture (Backend)
+- **Native EventEmitter**: Implemented `events.js` extending Node.js's built-in `EventEmitter` with zero external dependencies.
+- **Decoupled Background Listeners**: `listeners.js` handles `task-created` (with simulated 2-second notification delay) and `task-deleted` events.
+- **Immediate Response Timing**: `POST /tasks` responds immediately with 201 Created (~15 ms) and emits `task-created`, with background notification completing 2 seconds later in the Node.js event loop.
+- **Safe Error Handling**: Dedicated `error` event listener safely catches notification errors without crashing the server or failing database transactions.
+
 ### Running Both Servers Locally
 1. **Backend**:
    ```powershell
