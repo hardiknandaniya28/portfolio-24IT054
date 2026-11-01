@@ -110,7 +110,22 @@ Integrates secure user authentication (registration & login) using bcrypt passwo
 - **Immediate Response Timing**: `POST /tasks` responds immediately with 201 Created (~15 ms) and emits `task-created`, with background notification completing 2 seconds later in the Node.js event loop.
 - **Safe Error Handling**: Dedicated `error` event listener safely catches notification errors without crashing the server or failing database transactions.
 
-### Running Both Servers Locally
+### Practical 11: Containerization with Docker and Docker Compose
+- **Full-Stack Orchestration**: Orchestrates 3 services (`frontend`, `backend`, `mongodb`) inside an internal bridge network (`app-network`) with a single command: `docker compose up --build`.
+- **Multi-Stage Frontend**: Builds React app with `node:18-alpine` and serves production bundle via lightweight `nginx:alpine` on port 5173 with SPA routing support.
+- **Backend Service**: Containerized Node 18 Express API on port 5000, listening on `0.0.0.0`, with automatic MongoDB connection retry.
+- **MongoDB & Persistent Volume**: Official `mongo:latest` image mapped to port 27017, backed by named volume `mongo-data` for data persistence across container restarts.
+
+### Running the Application
+
+#### Option A: Running via Docker Compose (Practical 11)
+```bash
+docker compose up --build
+```
+- Open `http://localhost:5173` in your browser.
+- Stop with `docker compose down` (preserves MongoDB data in `mongo-data` volume).
+
+#### Option B: Running Locally Outside Docker
 1. **Backend**:
    ```powershell
    cd task-manager-api-24IT054
