@@ -116,6 +116,12 @@ Integrates secure user authentication (registration & login) using bcrypt passwo
 - **Backend Service**: Containerized Node 18 Express API on port 5000, listening on `0.0.0.0`, with automatic MongoDB connection retry.
 - **MongoDB & Persistent Volume**: Official `mongo:latest` image mapped to port 27017, backed by named volume `mongo-data` for data persistence across container restarts.
 
+### Practical 12: CI/CD Pipeline with GitHub Actions
+- **Continuous Integration Pipeline**: Automated GitHub Actions workflow (`.github/workflows/ci.yml`) triggered on pushes and pull requests to `main`.
+- **Automated Testing**: Runs 9 comprehensive tests (`tests/tasks.test.js`) verifying validation, JWT authentication, `/health` endpoint, and task routes.
+- **Pipeline Failure & Resolution**: Demonstrated deliberate assertion failure producing Red X status, corrected to produce Green checkmark.
+- **Workflow Status Badge**: Track real-time build status directly from GitHub.
+
 ### Running the Application
 
 #### Option A: Running via Docker Compose (Practical 11)
