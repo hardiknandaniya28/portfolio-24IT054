@@ -97,6 +97,13 @@ Integrates secure user authentication (registration & login) using bcrypt passwo
 - **Render Optimization**: Wrapped `TaskItem` in `React.memo` and stabilized CRUD handlers in `TaskManager` with `useCallback`, eliminating redundant re-renders of the task list.
 - **Build & Profiling Evidence**: Detailed comparison metrics, chunk breakdowns, and profiling notes are preserved in `docs/practical8/comparison.md`.
 
+### Practical 9: In-Memory Caching and Query Optimization (Backend)
+- **node-cache Integration**: In-memory caching for `GET /tasks` and `GET /tasks/:id` with 60s TTL (`stdTTL: 60`).
+- **User Scoped Keys**: `tasks_${req.user.id}` and `task_${id}_${userId}` ensuring strict data isolation across accounts.
+- **Proactive Invalidation**: Writes (`POST`, `PUT`, `DELETE`) automatically evict corresponding cache entries via `invalidateTaskCache`.
+- **Debug Counters**: `GET /debug/cache-stats` tracks cache hits and misses; response headers expose `X-Cache: HIT / MISS`.
+- **Performance**: Response times drop from ~84 ms (MongoDB Atlas cloud query) to ~3 ms (in-memory RAM), achieving ~96% lower latency.
+
 ### Running Both Servers Locally
 1. **Backend**:
    ```powershell
