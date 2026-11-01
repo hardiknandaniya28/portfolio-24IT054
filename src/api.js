@@ -170,3 +170,26 @@ export const deleteTask = async (id) => {
         throw err;
     }
 };
+
+// ==========================================
+// AI Integration API Calls (Practical 13)
+// ==========================================
+
+export const generateTaskDescription = async (title) => {
+    try {
+        const res = await fetch(`${BASE_URL}/api/ai/generate-description`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                ...getAuthHeader()
+            },
+            body: JSON.stringify({ title })
+        });
+        return await handleResponse(res, 'Failed to generate description');
+    } catch (err) {
+        if (err.name === 'TypeError' && err.message.includes('fetch')) {
+            throw new Error('Unable to connect to backend server. Is it running on http://localhost:5000?');
+        }
+        throw err;
+    }
+};

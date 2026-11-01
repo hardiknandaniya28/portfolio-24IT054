@@ -1,12 +1,51 @@
 import { useState } from 'react';
-import { createTask } from '../api';
+import { createTask, generateTaskDescription } from '../api';
 
 export default function TaskForm({ onCreated, showToast }) {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [priority, setPriority] = useState('medium');
     const [loading, setLoading] = useState(false);
+    const [isGenerating, setIsGenerating] = useState(false);
     const [error, setError] = useState('');
+
+    const handleGenerateDescription = async () => {
+        if (!title.trim()) {
+            if (showToast) {
+                showToast('Enter a task title first.', 'error');
+            } else {
+                setError('Enter a task title first.');
+            }
+            return;
+        }
+
+        setIsGenerating(true);
+        setError('');
+
+        try {
+            const data = await generateTaskDescription(title.trim());
+            if (data.description) {
+                setDescription(data.description);
+            }
+            if (showToast) {
+                showToast(
+                    data.fallback
+                        ? 'AI is unavailable. You can edit the fallback description.'
+                        : 'AI description generated. Review it before saving.',
+                    data.fallback ? 'error' : 'success'
+                );
+            }
+        } catch (err) {
+            const errorMsg = err.message || 'Unable to generate description';
+            if (showToast) {
+                showToast(errorMsg, 'error');
+            } else {
+                setError(errorMsg);
+            }
+        } finally {
+            setIsGenerating(false);
+        }
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -71,7 +110,7 @@ export default function TaskForm({ onCreated, showToast }) {
             <div className="form-row">
                 <input
                     type="text"
-                    placeholder="Description (optional)"
+                    placeholder="Details (Optional)"
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                 />
@@ -80,8 +119,21 @@ export default function TaskForm({ onCreated, showToast }) {
                     className="btn btn-primary"
                     disabled={loading || !title.trim()}
                 >
-                    {loading ? 'Adding...' : 'Add'}
+                    {loading ? 'Adding...' : 'Add Task'}
                 </button>
+            </div>
+            <div className="ai-actions-row">
+                <button
+                    type="button"
+                    className="btn btn-ai"
+                    onClick={handleGenerateDescription}
+                    disabled={isGenerating || !title.trim()}
+                >
+                    {isGenerating ? 'Generating description...' : 'Generate description'}
+                </button>
+                <p className="ai-disclaimer">
+                    AI-generated suggestions are editable and should be reviewed before saving.
+                </p>
             </div>
             {error && <p className="error">{error}</p>}
         </form>

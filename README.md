@@ -142,3 +142,12 @@ docker compose up --build
    npm run dev
    ```
 3. Navigate to `http://localhost:5173/tasks` for authenticated task management, and `http://localhost:5173/dashboard` for performance-optimized analytics.
+
+
+### Practical 13: AI API Integration into a Web Application
+- **AI-Powered Task Descriptions**: Added OpenAI API integration (`gpt-4o-mini`) via backend route `POST /api/ai/generate-description`.
+- **Zero Frontend Key Exposure**: `OPENAI_API_KEY` is kept strictly within the backend `.env`. React communicates solely through authenticated Express proxy requests.
+- **In-Memory Rate Limiting**: Throttles requests to 1 request per task per minute (HTTP 429) to prevent quota exhaustion and endpoint abuse.
+- **Graceful Error Handling & Fallbacks**: If the AI API fails, times out, or has no configured key, returns `fallback: true` with a fallback description so the application never breaks.
+- **Human-in-the-Loop Editable Drafts**: The generated description populates the task form as an editable draft. Users review or refine it before saving to MongoDB Atlas.
+- **Automated Tests**: 13 automated backend tests covering input validation, JWT authentication, rate limiting, and fallback behavior.
